@@ -34,11 +34,6 @@ pipeline {
           steps {
             unstash 'stash1'
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/webRtc'
-            dir(path: '/var/www/webRtc') {
-              sh 'ls -l'
-              sh 'sudo -n pm2 restart index.js'
-            }
-
           }
         }
         stage('Deploy WebRtcClient') {
