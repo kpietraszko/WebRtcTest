@@ -26,14 +26,14 @@ pipeline {
           steps {
             unstash 'stash1'
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/webRtc'
-            sh 'cd /var/www/webRtc && npm install'
+            sh 'cd /var/www/webRtc && sudo -n npm install'
           }
         }
         stage('Deploy WebRtcClient') {
           steps {
             unstash 'stash2'
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/webRtcClient'
-            sh 'cd /var/www/webRtcClient && npm install'
+            sh 'cd /var/www/webRtcClient && sudo -n npm install'
             sh 'sudo systemctl restart nginx'
           }
         }
