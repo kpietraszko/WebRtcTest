@@ -40,10 +40,6 @@ pipeline {
           steps {
             unstash 'stash2'
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/webRtcClient'
-            dir(path: '/') {
-              sh 'nginx -t'
-            }
-
             sh 'sudo systemctl restart nginx'
           }
         }
