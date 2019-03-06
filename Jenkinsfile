@@ -27,7 +27,7 @@ pipeline {
             unstash 'stash1'
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/webRtc'
             dir(path: '/var/www/webRtc') {
-              sh 'npm install'
+              sh 'sudo -n npm install'
             }
 
           }
@@ -37,7 +37,7 @@ pipeline {
             unstash 'stash2'
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/webRtcClient'
             dir(path: '/var/www/webRtcClient') {
-              sh 'npm install'
+              sh 'sudo -n npm install'
             }
 
             sh 'sudo systemctl restart nginx'
