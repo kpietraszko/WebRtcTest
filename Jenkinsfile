@@ -35,7 +35,7 @@ pipeline {
             unstash 'stash1'
             sh 'sudo -n cp -Rf webRtc /var/www'
             dir(path: '/var/www/webRtc') {
-              sh 'sudo -n pm2 start index.js'
+              sh 'sudo -n pm2 restart index.js'
             }
 
           }
