@@ -26,7 +26,7 @@ pipeline {
           steps {
             unstash 'stash1'
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/webRtc'
-            sh 'cd /var/www/webRtc && sudo -n npm install'
+            sh 'cd /var/www/webRtc && sudo -n su && npm install'
           }
         }
         stage('Deploy WebRtcClient') {
