@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout repo') {
       steps {
-        git(url: 'https://github.com/kpietraszko/WebRtcTest', credentialsId: 'dfd11a24-2b91-4a0b-9217-ef1c8106c675')
+        git(url: 'https://github.com/kpietraszko/WebRtcTest', credentialsId: 'c629dda8-5055-4788-b71a-81f7ec988605')
       }
     }
     stage('Build WebRtc') {
