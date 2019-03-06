@@ -33,7 +33,7 @@ pipeline {
         stage('Deploy WebRtc') {
           steps {
             unstash 'stash1'
-            sh 'sudo -n sh \'cp -Rf webRtc /usr/local\''
+            sh 'sudo -n cp -Rf webRtc ~/'
             dir(path: '/usr/local/webRtc') {
               sh 'sudo -n pm2 start index.js'
             }
