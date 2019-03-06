@@ -34,7 +34,7 @@ pipeline {
           steps {
             unstash 'stash1'
             sh 'sudo -n cp -Rf webRtc ~/'
-            dir(path: '/usr/local/webRtc') {
+            dir(path: '~/webRtc') {
               sh 'sudo -n pm2 start index.js'
             }
 
