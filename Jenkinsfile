@@ -39,7 +39,7 @@ pipeline {
         stage('Deploy WebRtcClient') {
           steps {
             unstash 'stash2'
-            sh 'sudo -n sh \'cp -Rf ${WORKSPACE}/webRtcClient /var/www/webRtcClient\''
+            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/webRtcClient'
             sh '''nginx -t
 sudo systemctl restart nginx'''
           }
