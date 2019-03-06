@@ -10,17 +10,19 @@ pipeline {
       parallel {
         stage('Build WebRtc') {
           steps {
-            sh '''cd WebRtc
-npm install
-cd ..'''
             stash(name: 'stash1', includes: 'webRtc/*')
+            dir(path: 'WebRtcTest/WebRtc') {
+              sh 'npm install'
+            }
+
           }
         }
         stage('Build WebRtcClient') {
           steps {
-            sh '''cd webRtcClient
-npm install
-cd ..'''
+            dir(path: 'WebRtcTest/WebRtcClient') {
+              sh 'npm install'
+            }
+
             stash(name: 'stash2', includes: 'webRtcClient/*')
           }
         }
