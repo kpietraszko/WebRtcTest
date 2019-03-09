@@ -1,5 +1,4 @@
-// test change4
-const url = 'ws://localhost:8080';//'ws://147.135.211.159:8080';
+const url = 'ws://vps656802.ovh.net:7777';
 const connection = new WebSocket(url);
 
 var peer = new SimplePeer({
