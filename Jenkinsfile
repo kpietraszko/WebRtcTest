@@ -1,9 +1,13 @@
 pipeline {
   agent any
   stages {
-    stage('Checkout repo') {
+    stage('Clean workspace') {
       steps {
         sh 'sudo -n rm -rF /var/lib/jenkins/workspace/WebRtcTest_master/webRtc /var/lib/jenkins/workspace/WebRtcTest_master/webRtcClient'
+      }
+    }
+    stage('Checkout repo') {
+      steps {
         git(url: 'https://github.com/kpietraszko/WebRtcTest', credentialsId: 'c629dda8-5055-4788-b71a-81f7ec988605')
       }
     }
