@@ -13,7 +13,7 @@ pipeline {
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
             sh '''cd /var/www/webRtc && 
 sudo -n su && 
-yarn install --prefer-offline'''
+sudo -n yarn install --prefer-offline'''
           }
         }
         stage('Build WebRtcClient') {
