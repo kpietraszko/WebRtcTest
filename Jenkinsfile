@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Clean workspace') {
-      steps {
-        sh 'sudo -n rm -rF /var/lib/jenkins/workspace/WebRtcTest_master/webRtc /var/lib/jenkins/workspace/WebRtcTest_master/webRtcClient'
-      }
-    }
     stage('Checkout repo') {
       steps {
         git(url: 'https://github.com/kpietraszko/WebRtcTest', credentialsId: 'c629dda8-5055-4788-b71a-81f7ec988605')
@@ -19,6 +14,7 @@ pipeline {
             sh '''sudo -n su && 
 sudo -n yarn install --prefer-offline'''
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
+            sh 'sudo -n rm -rf ${WORKSPACE}/webRtc'
           }
         }
         stage('Get and update modules & deploy WebRtcClient') {
@@ -27,6 +23,7 @@ sudo -n yarn install --prefer-offline'''
             sh '''sudo -n su && 
 yarn install --prefer-offline'''
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/'
+            sh 'sudo -n rm -rf ${WORKSPACE}/webRtcClient'
           }
         }
       }
