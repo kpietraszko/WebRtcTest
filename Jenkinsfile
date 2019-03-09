@@ -33,13 +33,13 @@ pipeline {
         stage('Deploy WebRtc') {
           steps {
             unstash 'stash1'
-            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/webRtc'
+            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
           }
         }
         stage('Deploy WebRtcClient') {
           steps {
             unstash 'stash2'
-            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/webRtcClient'
+            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/'
             sh 'sudo systemctl restart nginx'
           }
         }
