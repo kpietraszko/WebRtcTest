@@ -34,7 +34,7 @@ wss.on('connection', function connection(ws) {
 		// wait for 'connect' event before using the data channel
 		console.log("WebRTC connection established");
 		setInterval(() =>
-			peer.send(`hey peer #${id}, updated 2019-03-09 22:56`),
+			peer.send(`hey peer #${id}, updated 2019-03-09 23:02`),
 			1000);
 	})
 });
