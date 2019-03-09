@@ -9,9 +9,6 @@ pipeline {
     stage('Build and deploy WebRtc') {
       parallel {
         stage('Build & deploy WebRtc') {
-          environment {
-            SKIP_DOWNLOAD = 'true'
-          }
           steps {
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
             dir(path: '/var/www/webRtc') {
