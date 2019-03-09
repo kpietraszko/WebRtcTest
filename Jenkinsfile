@@ -10,11 +10,19 @@ pipeline {
       parallel {
         stage('Build WebRtc') {
           steps {
+            dir(path: 'webRtc') {
+              sh 'sudo -n su && npm install'
+            }
+
             stash(name: 'stash1', includes: 'webRtc/*')
           }
         }
         stage('Build WebRtcClient') {
           steps {
+            dir(path: 'webRtcClient') {
+              sh 'sudo -n su && npm install'
+            }
+
             stash(name: 'stash2', includes: 'webRtcClient/*')
           }
         }
@@ -26,14 +34,12 @@ pipeline {
           steps {
             unstash 'stash1'
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/webRtc'
-            sh 'cd /var/www/webRtc && sudo -n su && npm install'
           }
         }
         stage('Deploy WebRtcClient') {
           steps {
             unstash 'stash2'
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/webRtcClient'
-            sh 'cd /var/www/webRtcClient && sudo -n npm install'
             sh 'sudo systemctl restart nginx'
           }
         }
