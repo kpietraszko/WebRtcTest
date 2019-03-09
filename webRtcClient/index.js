@@ -1,4 +1,4 @@
-const url = 'ws://vps656802.ovh.net:7777';
+const url = 'ws://147.135.211.159:7777';
 const connection = new WebSocket(url);
 
 var peer = new SimplePeer({
