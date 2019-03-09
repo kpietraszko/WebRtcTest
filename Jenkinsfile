@@ -13,20 +13,20 @@ pipeline {
             SKIP_DOWNLOAD = 'true'
           }
           steps {
-            dir(path: 'webRtc') {
+            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
+            dir(path: '/var/www/webRtc') {
               sh 'sudo -n su && yarn install --prefer-offline'
             }
 
-            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
           }
         }
         stage('Build WebRtcClient') {
           steps {
-            dir(path: 'webRtcClient') {
+            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/'
+            dir(path: '/var/www/webRtcClient') {
               sh 'sudo -n su && yarn install --prefer-offline'
             }
 
-            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/'
           }
         }
       }
