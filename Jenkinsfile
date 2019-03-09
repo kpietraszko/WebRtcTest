@@ -9,6 +9,9 @@ pipeline {
     stage('Build and deploy WebRtc') {
       parallel {
         stage('Build & deploy WebRtc') {
+          environment {
+            SKIP_DOWNLOAD = 'true'
+          }
           steps {
             dir(path: 'webRtc') {
               sh 'sudo -n su && yarn install --prefer-offline'
