@@ -14,6 +14,7 @@ pipeline {
             sh '''sudo -n su && 
 sudo -n yarn install --prefer-offline'''
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
+            sh 'sudo -n rm -rf ${WORKSPACE}/webRtc'
           }
         }
         stage('Get and update modules & deploy WebRtcClient') {
@@ -22,6 +23,7 @@ sudo -n yarn install --prefer-offline'''
             sh '''sudo -n su && 
 yarn install --prefer-offline'''
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/'
+            sh 'sudo -n rm -rf ${WORKSPACE}/webRtcClient'
           }
         }
       }
