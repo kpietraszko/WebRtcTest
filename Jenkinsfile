@@ -11,7 +11,7 @@ pipeline {
         stage('Build & deploy WebRtc') {
           steps {
             dir(path: 'webRtc') {
-              sh 'sudo -n su && yarn install'
+              sh 'sudo -n su && npm ci'
             }
 
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
@@ -20,7 +20,7 @@ pipeline {
         stage('Build WebRtcClient') {
           steps {
             dir(path: 'webRtcClient') {
-              sh 'sudo -n su && yarn install'
+              sh 'sudo -n su && npm ci'
             }
 
             sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/'
