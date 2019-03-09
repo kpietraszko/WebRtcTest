@@ -8,20 +8,20 @@ pipeline {
     }
     stage('Build and deploy WebRtc') {
       parallel {
-        stage('Build & deploy WebRtc') {
+        stage('Get and update modules & deploy WebRtc') {
           steps {
-            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
-            sh '''cd /var/www/webRtc && 
-sudo -n su && 
+            sh 'sudo -n cp -Rf /var/www/webRtc/node_modules ${WORKSPACE}/webRtc/'
+            sh '''sudo -n su && 
 sudo -n yarn install --prefer-offline'''
+            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
           }
         }
-        stage('Build WebRtcClient') {
+        stage('Get and update modules & deploy WebRtcClient') {
           steps {
-            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/'
-            sh '''cd /var/www/webRtcClient && 
-sudo -n su && 
+            sh 'sudo -n cp -Rf /var/www/webRtcClient/node_modules ${WORKSPACE}/webRtcClient/'
+            sh '''sudo -n su && 
 yarn install --prefer-offline'''
+            sh 'sudo -n cp -Rf ${WORKSPACE}/webRtcClient /var/www/'
           }
         }
       }
