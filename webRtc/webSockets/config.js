@@ -1,3 +1,3 @@
 module.exports = {
-	wsServerPort: 8080
+	wsServerPort: 7777
 }
