@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout repo') {
       steps {
-        sh 'rm -rF ${WORKSPACE}/webRtc ${WORKSPACE}/webRtcClient'
+        sh 'sudo -n rm -rF /var/lib/jenkins/workspace/WebRtcTest_master/webRtc /var/lib/jenkins/workspace/WebRtcTest_master/webRtcClient'
         git(url: 'https://github.com/kpietraszko/WebRtcTest', credentialsId: 'c629dda8-5055-4788-b71a-81f7ec988605')
       }
     }
