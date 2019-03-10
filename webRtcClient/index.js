@@ -8,10 +8,17 @@ var peer = new SimplePeer({
 	}
 });
 
+var fastBoi;
+
 connection.onopen = () => {
+	fastBoi = document.querySelector("#fastBoi");
 	console.log("WS connection opened");
 	peer.on('data', function incoming(data) {
 		console.log("Got WebRTC data", data.toString());
+		const moveRight = Math.floor(data / screen.width) % 2 == 0;
+		const positionIfRight = data % screen.width;
+		const position = moveRight ? positionIfRight : (screen.width - positionIfRight); 
+		fastBoi.style["transform"] = `translate(${position})`;
 	});
 
 	peer.on('signal', function (data) {
