@@ -17,7 +17,7 @@ connection.onopen = () => {
 		console.log("Got WebRTC data", data.toString());
 		const receivedPos = data * 2;
 		const moveRight = Math.floor(receivedPos / (screen.width-50)) % 2 == 0;
-		const positionIfRight = receivedPos % screen.width;
+		const positionIfRight = receivedPos % (screen.width-50);
 		const position = moveRight ? positionIfRight : (screen.width - positionIfRight); 
 		fastBoi.style["transform"] = `translate(${position}px)`;
 	});
