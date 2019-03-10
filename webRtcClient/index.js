@@ -8,7 +8,8 @@ var peer = new SimplePeer({
 	}
 });
 
-var fastBoi = document.querySelector("#fastBoi");
+var fastBoi;
+addEventListener("load", () => {fastBoi = document.querySelector("#fastBoi");});
 
 connection.onopen = () => {
 	console.log("WS connection opened");
