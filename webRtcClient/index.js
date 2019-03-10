@@ -16,6 +16,7 @@ connection.onopen = () => {
 	peer.on('data', function incoming(data) {
 		console.log("Got WebRTC data", data.toString());
 		const moveRight = Math.floor(data / screen.width) % 2 == 0;
+		console.log(moveRight);
 		const positionIfRight = data % screen.width;
 		const position = moveRight ? positionIfRight : (screen.width - positionIfRight); 
 		fastBoi.style["transform"] = `translate(${position*2}px)`;
