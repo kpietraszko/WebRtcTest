@@ -8,10 +8,9 @@ var peer = new SimplePeer({
 	}
 });
 
-var fastBoi;
+var fastBoi = document.querySelector("#fastBoi");
 
 connection.onopen = () => {
-	fastBoi = document.querySelector("#fastBoi");
 	console.log("WS connection opened");
 	peer.on('data', function incoming(data) {
 		// console.log("Got WebRTC data", data.toString());
