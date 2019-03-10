@@ -11,6 +11,8 @@ const peers = {};
 
 var counter = 0;
 
+setInterval(() => counter++, 17);
+
 wss.on('connection', function connection(ws) {
 	var peer = new Peer({
 		initiator: true, wrtc: wrtc, trickle: false,
@@ -39,5 +41,4 @@ wss.on('connection', function connection(ws) {
 			peer.send(`${counter}`),
 			17);
 	})
-	setInterval(() => counter++, 17);
 });
