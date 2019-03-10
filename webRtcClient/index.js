@@ -14,7 +14,7 @@ connection.onopen = () => {
 	fastBoi = document.querySelector("#fastBoi");
 	console.log("WS connection opened");
 	peer.on('data', function incoming(data) {
-		console.log("Got WebRTC data", data.toString());
+		// console.log("Got WebRTC data", data.toString());
 		const receivedPos = data * 2;
 		const moveRight = Math.floor(receivedPos / (screen.width-50)) % 2 == 0;
 		const positionIfRight = receivedPos % (screen.width-50);
