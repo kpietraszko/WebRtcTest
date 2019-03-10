@@ -18,7 +18,7 @@ connection.onopen = () => {
 		const moveRight = Math.floor(data / screen.width) % 2 == 0;
 		const positionIfRight = data % screen.width;
 		const position = moveRight ? positionIfRight : (screen.width - positionIfRight); 
-		fastBoi.style["transform"] = `translate(${position}px)`;
+		fastBoi.style["transform"] = `translate(${position*2}px)`;
 	});
 
 	peer.on('signal', function (data) {
