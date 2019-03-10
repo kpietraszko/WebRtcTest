@@ -15,11 +15,11 @@ connection.onopen = () => {
 	console.log("WS connection opened");
 	peer.on('data', function incoming(data) {
 		console.log("Got WebRTC data", data.toString());
-		const moveRight = Math.floor(data / ((screen.width-50)/2)) % 2 == 0;
-		console.log(moveRight);
-		const positionIfRight = data % screen.width;
+		const receivedPos = data * 2;
+		const moveRight = Math.floor(receivedPos / (screen.width-50)) % 2 == 0;
+		const positionIfRight = receivedPos % screen.width;
 		const position = moveRight ? positionIfRight : (screen.width - positionIfRight); 
-		fastBoi.style["transform"] = `translate(${position*2}px)`;
+		fastBoi.style["transform"] = `translate(${position}px)`;
 	});
 
 	peer.on('signal', function (data) {
