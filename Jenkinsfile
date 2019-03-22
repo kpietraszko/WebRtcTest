@@ -6,7 +6,6 @@ pipeline {
         git(url: 'https://github.com/kpietraszko/WebRtcTest', credentialsId: 'c629dda8-5055-4788-b71a-81f7ec988605')
       }
     }
-    stage('Build and deploy WebRtc') {
         stage('Get and update modules & deploy WebRtc') {
           steps {
             sh 'sudo -n cp -Rf /var/www/webRtc/node_modules ${WORKSPACE}/webRtc/ || true'
@@ -29,6 +28,5 @@ yarn build'''
             sh 'sudo -n rm -rf ${WORKSPACE}/webRtcClient'
           }
       }
-    }
   }
 }
