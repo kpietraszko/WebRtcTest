@@ -19,8 +19,11 @@ sudo -n yarn install --prefer-offline'''
         }
         stage('Get and update modules & deploy WebRtcClient') {
           steps {
-            sh '''sudo -n su && 
+            dir(path: 'webRtcClient') {
+              sh '''sudo -n su && 
 yarn build --prefer-offline'''
+            }
+
             sh 'sudo -n cp -af ${WORKSPACE}/webRtcClient/dist/. /var/www/webRtcClient'
             sh 'sudo -n rm -rf ${WORKSPACE}/webRtcClient'
           }
