@@ -7,7 +7,6 @@ pipeline {
       }
     }
     stage('Build and deploy WebRtc') {
-      parallel {
         stage('Get and update modules & deploy WebRtc') {
           steps {
             sh 'sudo -n cp -Rf /var/www/webRtc/node_modules ${WORKSPACE}/webRtc/ || true'
@@ -17,7 +16,7 @@ sudo -n yarn install --prefer-offline'''
             sh 'sudo -n rm -rf ${WORKSPACE}/webRtc'
           }
         }
-        stage('Get and update modules & deploy WebRtcClient') {
+		stage('Get and update modules & deploy WebRtcClient') {
           steps {
             dir(path: 'webRtcClient') {
               sh '''sudo -n su && 
@@ -29,7 +28,6 @@ yarn build'''
             sh 'sudo -n cp -af ${WORKSPACE}/webRtcClient/build/. /var/www/webRtcClient'
             sh 'sudo -n rm -rf ${WORKSPACE}/webRtcClient'
           }
-        }
       }
     }
   }
