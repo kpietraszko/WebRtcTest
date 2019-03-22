@@ -12,7 +12,7 @@
     "csx": "^9.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8",
+    "react-scripts": "3.0.0-next.b0cbf2ca",
     "typescript": "3.3.3333",
     "typestyle": "^2.0.1"
   },
