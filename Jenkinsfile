@@ -21,11 +21,12 @@ sudo -n yarn install --prefer-offline'''
           steps {
             dir(path: 'webRtcClient') {
               sh '''sudo -n su && 
-yarn install &&
+yarn install'''
+              sh '''sudo -n su && 
 yarn build'''
             }
 
-            sh 'sudo -n cp -af ${WORKSPACE}/webRtcClient/dist/. /var/www/webRtcClient'
+            sh 'sudo -n cp -af ${WORKSPACE}/webRtcClient/build/. /var/www/webRtcClient'
             sh 'sudo -n rm -rf ${WORKSPACE}/webRtcClient'
           }
         }
