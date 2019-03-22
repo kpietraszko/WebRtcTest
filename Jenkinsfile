@@ -21,6 +21,7 @@ sudo -n yarn install --prefer-offline'''
           steps {
             dir(path: 'webRtcClient') {
               sh '''sudo -n su && 
+yarn install &&
 yarn build --prefer-offline'''
             }
 
