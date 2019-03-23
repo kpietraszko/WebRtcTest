@@ -10,15 +10,17 @@ import { FpsContext } from "./contexts";
 const appStyle = style({ color: "red" });
 
 const App: FC = () => {
-  const [state, dispatch] = useReducer(genericReducer, { fps: 0 });
+  // const [state, dispatch] = useReducer(genericReducer, { fps: 0 });
   return (
-    <GlobalStateHandler dispatch={dispatch}>
+    <>
+    {/* <GlobalStateHandler dispatch={dispatch}> */}
       <Game />
-      <FpsContext.Provider value={state.fps}>
-        <FpsDisplay />
-      </FpsContext.Provider>
+       {/* <FpsContext.Provider value={state.fps}>
+       <FpsDisplay />
+       </FpsContext.Provider> */}
       <Version />
-    </GlobalStateHandler>
+    {/* </GlobalStateHandler> */}
+    </>
   );
 };
 
