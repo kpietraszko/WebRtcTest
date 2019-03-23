@@ -50,6 +50,7 @@ const Game : FC = () => {
                 setFps(engine.getFps());
             }
         });
+        alert(engine.webGLVersion);
         scene.debugLayer.show();
     }
     
