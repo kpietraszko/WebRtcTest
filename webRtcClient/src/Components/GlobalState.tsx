@@ -8,12 +8,15 @@ export interface Props {
 }
 
 const GlobalStateHandler : FC<Props> = (props) => {
-
-	
 	const [state, dispatch] = useReducer(genericReducer, { fps: 0 });
+	var framesToUpdateFpsCounter = 60
 	
 	const setFps = (fps: number): void => {
-		dispatch(setFpsActionCreator(fps));
+		framesToUpdateFpsCounter--;
+		if (framesToUpdateFpsCounter === 0){
+			dispatch(setFpsActionCreator(fps));
+			framesToUpdateFpsCounter = 10;
+		}
 	}
 
 	return (
