@@ -4,14 +4,19 @@ import Game from "./Components/Game";
 import Version from "./Components/Version";
 import FpsDisplay from "./Components/FpsDisplay";
 import GlobalStateHandler from "./Components/GlobalState";
+import genericReducer from "./store/genericReducer";
+import { FpsContext } from "./contexts";
 
 const appStyle = style({ color: "red" });
 
 const App: FC = () => {
+  const [state, dispatch] = useReducer(genericReducer, { fps: 0 });
   return (
-    <GlobalStateHandler>
+    <GlobalStateHandler dispatch={dispatch}>
       <Game />
-      <FpsDisplay />
+      <FpsContext.Provider value={state.fps}>
+        <FpsDisplay />
+      </FpsContext.Provider>
       <Version />
     </GlobalStateHandler>
   );

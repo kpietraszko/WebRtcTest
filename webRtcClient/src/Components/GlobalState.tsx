@@ -1,29 +1,29 @@
 import React, { FC, ReactNode, useReducer } from "react";
-import { FpsContext } from "../contexts";
-import genericReducer from "../store/genericReducer";
+import { FpsContext, SetFpsContext } from "../contexts";
+import genericReducer, { GlobalState } from "../store/genericReducer";
 import { setFpsActionCreator } from "../store/actions";
 
 export interface Props {
-	children : ReactNode
+	/* state: GlobalState, */
+	dispatch: React.Dispatch<(state: GlobalState) => GlobalState>
+	children: ReactNode
 }
 
-const GlobalStateHandler : FC<Props> = (props) => {
-	const [state, dispatch] = useReducer(genericReducer, { fps: 0 });
+const GlobalStateHandler: FC<Props> = (props) => {
 	var framesToUpdateFpsCounter = 30
-	
+
 	const setFps = (fps: number): void => {
 		framesToUpdateFpsCounter--;
-		if (framesToUpdateFpsCounter === 0){
-			dispatch(setFpsActionCreator(fps));
-			console.log("Updating fps");
+		if (framesToUpdateFpsCounter === 0) {
+			props.dispatch(setFpsActionCreator(fps));
 			framesToUpdateFpsCounter = 30;
 		}
 	}
 
-	return (
-		<FpsContext.Provider value={{fps: state.fps, setFps: setFps}}>
+	return ( // maybe only put Set* providers in this handler
+		<SetFpsContext.Provider value={setFps}>
 			{props.children}
-		</FpsContext.Provider>
+		</SetFpsContext.Provider>
 	);
 }
 

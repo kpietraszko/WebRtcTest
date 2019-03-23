@@ -16,7 +16,7 @@ export type SceneProps = {
   height?: number
 };
 
-export default class Scene extends React.Component<SceneProps & React.HTMLAttributes<HTMLCanvasElement>, {}> {
+class Scene extends React.Component<SceneProps & React.HTMLAttributes<HTMLCanvasElement>, {}> {
   private scene!: BABYLON.Scene;
   private engine!: BABYLON.Engine;
   private canvas!: HTMLCanvasElement;
@@ -82,3 +82,5 @@ export default class Scene extends React.Component<SceneProps & React.HTMLAttrib
     )
   }
 }
+
+export default React.memo(Scene, () => true);

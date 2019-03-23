@@ -3,19 +3,18 @@ import Scene, { SceneEventArgs } from "./Scene";
 import * as BABYLON from "babylonjs";
 import { style } from "typestyle";
 import { viewWidth, viewHeight, px, percent } from "csx";
-import { PerformanceMonitor } from "babylonjs";
-import { FpsContext } from "../contexts";
+import { SetFpsContext } from "../contexts";
 
-const canvasStyle = {
+const canvasStyle = style({
     width: percent(100),
     height: percent(100),
     maxWidth: percent(100),
     maxHeight: percent(100),
     display: "block"
-};
+});
 
 const Game : FC = () => {
-    const fpsContext = useContext(FpsContext);
+    const setFps = useContext(SetFpsContext);
 	const onSceneMount = (e: SceneEventArgs) => {
         const { canvas, scene, engine } = e;
         
@@ -46,16 +45,14 @@ const Game : FC = () => {
         engine.runRenderLoop(() => {
             if (scene) {
                 scene.render();
-                fpsContext.setFps(engine.getFps());
+                setFps(engine.getFps());
             }
         });
     }
-    // canvasStyle.height = (px(window.innerHeight) as string);
-    // canvasStyle.maxHeight = (px(window.innerHeight) as string);
-    const canvasStyleClass = style(canvasStyle);
+    
 	return (
-		<Scene onSceneMount={onSceneMount} className={canvasStyleClass} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight} />
+		<Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight} />
 	)
 }
 
-export default Game;
+export default React.memo(Game, () => true);

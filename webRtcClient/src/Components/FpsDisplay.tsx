@@ -15,7 +15,7 @@ const fpsStyle = style({
 const FpsDisplay : FC = () => {
 	var fps = useContext(FpsContext);
 	return (
-		<div className={fpsStyle}>{fps.fps.toFixed()} fps</div>
+		<div className={fpsStyle}>{fps.toFixed()} fps</div>
 	)
 }
 
