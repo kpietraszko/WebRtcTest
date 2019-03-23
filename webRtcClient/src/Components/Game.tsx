@@ -1,9 +1,10 @@
-import React, { FC, useRef, useEffect, useContext } from "react";
+import React, { FC, useRef, useEffect, useContext, useState } from "react";
 import Scene, { SceneEventArgs } from "./Scene";
 import * as BABYLON from "babylonjs";
 import { style } from "typestyle";
 import { viewWidth, viewHeight, px, percent } from "csx";
 import { SetFpsContext } from "../contexts";
+import Fullscreen from "react-full-screen";
 
 const canvasStyle = style({
     width: percent(100),
@@ -13,15 +14,16 @@ const canvasStyle = style({
     display: "block"
 });
 
-const Game : FC = () => {
+const Game: FC = () => {
     const setFps = useContext(SetFpsContext);
-	const onSceneMount = (e: SceneEventArgs) => {
+    const [fullscreen, setFullscreen] = useState(false);
+    const onSceneMount = (e: SceneEventArgs) => {
         const { canvas, scene, engine } = e;
 
         // BABYLON.SceneOptimizer.OptimizeAsync(scene);
-        
+
         // This creates and positions a free camera (non-mesh)
-        var camera = new BABYLON.ArcRotateCamera("camera1", 1, Math.PI/3, 8, new BABYLON.Vector3(0,0,0), scene); //new BABYLON.Vector3(0, 5, -10), scene);
+        var camera = new BABYLON.ArcRotateCamera("camera1", 1, Math.PI / 3, 8, new BABYLON.Vector3(0, 0, 0), scene); //new BABYLON.Vector3(0, 5, -10), scene);
 
         // This targets the camera to scene origin
         camera.setTarget(BABYLON.Vector3.Zero());
@@ -52,10 +54,17 @@ const Game : FC = () => {
         });
         scene.debugLayer.show();
     }
-    
-	return (
-		<Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight} />
-	)
+
+    return (
+        <>
+        <button onClick={() => { setFullscreen(true); }} style={{position: "absolute"}}>
+                Go Fullscreen
+        </button>
+        <Fullscreen enabled={fullscreen}>
+            <Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight} />
+        </Fullscreen >
+        </>
+    )
 }
 
 export default React.memo(Game, () => true);
