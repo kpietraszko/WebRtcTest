@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/babylonjs": "^2.4.1",
     "@types/jest": "24.0.11",
     "@types/node": "11.11.3",
     "@types/preval.macro": "^3.0.0",
@@ -14,7 +13,7 @@
     "preval.macro": "^3.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "3.0.0-next.b0cbf2ca",
+    "react-scripts": "^2.1.8",
     "typescript": "3.3.3333",
     "typestyle": "^2.0.1"
   },
