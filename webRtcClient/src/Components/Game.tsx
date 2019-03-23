@@ -50,7 +50,7 @@ const Game : FC = () => {
     // canvasStyle.maxHeight = (px(window.innerHeight) as string);
     const canvasStyleClass = style(canvasStyle);
 	return (
-		<Scene onSceneMount={onSceneMount} className={canvasStyleClass} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight}/>
+		<Scene onSceneMount={onSceneMount} className={canvasStyleClass} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight} />
 	)
 }
 

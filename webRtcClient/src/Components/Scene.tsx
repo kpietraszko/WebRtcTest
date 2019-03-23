@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as BABYLON from "babylonjs";
 import { EngineInstrumentation } from "babylonjs";
 
@@ -17,7 +17,6 @@ export type SceneProps = {
 };
 
 export default class Scene extends React.Component<SceneProps & React.HTMLAttributes<HTMLCanvasElement>, {}> {
-
   private scene!: BABYLON.Scene;
   private engine!: BABYLON.Engine;
   private canvas!: HTMLCanvasElement;
