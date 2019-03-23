@@ -9,8 +9,11 @@ pipeline {
     stage('Get and update modules & deploy WebRtc') {
       steps {
         sh 'sudo -n cp -Rf /var/www/webRtc/node_modules ${WORKSPACE}/webRtc/ || true'
-        sh '''sudo -n su && 
+        dir(path: 'webRtc') {
+          sh '''sudo -n su && 
 sudo -n yarn install --prefer-offline'''
+        }
+
         sh 'sudo -n cp -Rf ${WORKSPACE}/webRtc /var/www/'
         sh 'sudo -n rm -rf ${WORKSPACE}/webRtc'
       }
