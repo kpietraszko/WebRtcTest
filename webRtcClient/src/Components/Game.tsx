@@ -1,19 +1,18 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useRef, useEffect } from "react";
 import Scene, { SceneEventArgs } from "./Scene";
 import * as BABYLON from "babylonjs";
 import { style } from "typestyle";
-import { viewWidth, viewHeight, px } from "csx";
+import { viewWidth, viewHeight, px, percent } from "csx";
 
 const canvasStyle = {
-    width: viewWidth(100),
-    height: viewHeight(100), // overwritten
-    maxWidth: viewWidth(100),
-    maxHeight: viewHeight(100), // overwritten
+    width: percent(100),
+    height: percent(100),
+    maxWidth: percent(100),
+    maxHeight: percent(100),
     display: "block"
 };
 
 const Game : FC = () => {
-    
 	const onSceneMount = (e: SceneEventArgs) => {
         const { canvas, scene, engine } = e;
         
@@ -47,8 +46,8 @@ const Game : FC = () => {
             }
         });
     }
-    canvasStyle.height = px(window.innerHeight);
-    canvasStyle.maxHeight = px(window.innerHeight);
+    // canvasStyle.height = (px(window.innerHeight) as string);
+    // canvasStyle.maxHeight = (px(window.innerHeight) as string);
     const canvasStyleClass = style(canvasStyle);
 	return (
 		<Scene onSceneMount={onSceneMount} className={canvasStyleClass} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight}/>
