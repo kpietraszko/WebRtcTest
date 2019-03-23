@@ -2,15 +2,15 @@ import React, { FC, useRef } from "react";
 import Scene, { SceneEventArgs } from "./Scene";
 import * as BABYLON from "babylonjs";
 import { style } from "typestyle";
-import { viewWidth, viewHeight, percent } from "csx";
+import { viewWidth, viewHeight, px } from "csx";
 
-const canvasStyle = style({
+const canvasStyle = {
     width: viewWidth(100),
-    height: viewHeight(100),
+    height: viewHeight(100), // overwritten
     maxWidth: viewWidth(100),
-    maxHeight: viewHeight(100),
+    maxHeight: viewHeight(100), // overwritten
     display: "block"
-});
+};
 
 const Game : FC = () => {
     
@@ -46,9 +46,12 @@ const Game : FC = () => {
                 scene.render();
             }
         });
-	}
+    }
+    canvasStyle.height = px(window.innerHeight);
+    canvasStyle.maxHeight = px(window.innerHeight);
+    const canvasStyleClass = style(canvasStyle);
 	return (
-		<Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight}/>
+		<Scene onSceneMount={onSceneMount} className={canvasStyleClass} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight}/>
 	)
 }
 
