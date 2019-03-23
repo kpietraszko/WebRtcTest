@@ -48,7 +48,7 @@ const Game : FC = () => {
         });
 	}
 	return (
-		<Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={false} width={window.innerWidth} height={window.innerHeight}/>
+		<Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight}/>
 	)
 }
 
