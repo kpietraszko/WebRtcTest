@@ -18,7 +18,7 @@ const Game : FC = () => {
         const { canvas, scene, engine } = e;
         
         // This creates and positions a free camera (non-mesh)
-        var camera = new BABYLON.UniversalCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
+        var camera = new BABYLON.ArcRotateCamera("camera1", 1, Math.PI/3, 8, new BABYLON.Vector3(0,0,0), scene); //new BABYLON.Vector3(0, 5, -10), scene);
 
         // This targets the camera to scene origin
         camera.setTarget(BABYLON.Vector3.Zero());
