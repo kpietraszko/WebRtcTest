@@ -1,8 +1,10 @@
-import React, { FC, useRef, useEffect } from "react";
+import React, { FC, useRef, useEffect, useContext } from "react";
 import Scene, { SceneEventArgs } from "./Scene";
 import * as BABYLON from "babylonjs";
 import { style } from "typestyle";
 import { viewWidth, viewHeight, px, percent } from "csx";
+import { PerformanceMonitor } from "babylonjs";
+import { FpsContext } from "../contexts";
 
 const canvasStyle = {
     width: percent(100),
@@ -13,6 +15,7 @@ const canvasStyle = {
 };
 
 const Game : FC = () => {
+    const fpsContext = useContext(FpsContext);
 	const onSceneMount = (e: SceneEventArgs) => {
         const { canvas, scene, engine } = e;
         
@@ -43,6 +46,7 @@ const Game : FC = () => {
         engine.runRenderLoop(() => {
             if (scene) {
                 scene.render();
+                fpsContext.setFps(engine.getFps());
             }
         });
     }
