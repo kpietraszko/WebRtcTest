@@ -4,7 +4,7 @@ import { style } from "typestyle";
 import { px, em } from "csx";
 
 const footerStyle = style({
-	fontSize: em(3),
+	fontSize: em(0.8),
 	position: "absolute",
 	bottom: px(10),
 	left: px(10),
