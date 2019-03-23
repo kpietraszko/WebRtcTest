@@ -18,7 +18,7 @@ const Game : FC = () => {
 	const onSceneMount = (e: SceneEventArgs) => {
         const { canvas, scene, engine } = e;
 
-        BABYLON.SceneOptimizer.OptimizeAsync(scene);
+        // BABYLON.SceneOptimizer.OptimizeAsync(scene);
         
         // This creates and positions a free camera (non-mesh)
         var camera = new BABYLON.ArcRotateCamera("camera1", 1, Math.PI/3, 8, new BABYLON.Vector3(0,0,0), scene); //new BABYLON.Vector3(0, 5, -10), scene);
