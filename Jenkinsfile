@@ -31,7 +31,6 @@ yarn build'''
         }
 
         sh 'sudo -n cp -af ${WORKSPACE}/webRtcClient/build/. /var/www/webRtcClient'
-        sh 'sudo -n rm -rf ${WORKSPACE}/webRtcClient'
       }
     }
   }
