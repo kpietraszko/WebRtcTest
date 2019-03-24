@@ -19,4 +19,4 @@ const Version: FC = () => {
 	);
 }
 
-export default Version;
+export default React.memo(Version, () => true);

@@ -22,7 +22,7 @@ const Game: FC = () => {
 
         // BABYLON.SceneOptimizer.OptimizeAsync(scene);
 
-        // This creates and positions a free camera (non-mesh)
+        // This creates and positions a camera (non-mesh)
         var camera = new BABYLON.ArcRotateCamera("camera1", 1, Math.PI / 3, 8, new BABYLON.Vector3(0, 0, 0), scene); //new BABYLON.Vector3(0, 5, -10), scene);
 
         // This targets the camera to scene origin
@@ -37,22 +37,21 @@ const Game: FC = () => {
         // Default intensity is 1. Let's dim the light a small amount
         light.intensity = 0.7;
 
-        // Our built-in 'sphere' shape. Params: name, subdivs, size, scene
-        var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
+        // Our built-in 'sphere' shape.
+        var sphere = BABYLON.MeshBuilder.CreateSphere("sphere1", { segments: 16, diameter: 2} , scene);
 
         // Move the sphere upward 1/2 its height
         sphere.position.y = 1;
 
-        // Our built-in 'ground' shape. Params: name, width, depth, subdivs, scene
-        var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
+        // Our built-in 'ground' shape.
+        var ground = BABYLON.MeshBuilder.CreateGround("ground1", { width: 6, height: 6, subdivisions: 2}, scene);
 
         engine.runRenderLoop(() => {
             if (scene) {
                 scene.render();
-                setFps(engine.getFps());
+                setFps(engine.performanceMonitor.averageFPS);
             }
         });
-        scene.debugLayer.show();
     }
 
     return (
