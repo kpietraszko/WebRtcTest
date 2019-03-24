@@ -10,7 +10,7 @@ import { FpsContext } from "./contexts";
 const appStyle = style({ color: "red" });
 
 const App: FC = () => {
-  // const [state, dispatch] = useReducer(genericReducer, { fps: 0 });
+  // const [state, dispatch] y= useReducer(genericReducer, { fps: 0 });
   return (
     <>
     {/* <GlobalStateHandler dispatch={dispatch}> */}

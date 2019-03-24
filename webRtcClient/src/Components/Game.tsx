@@ -56,14 +56,7 @@ const Game: FC = () => {
     }
 
     return (
-        <>
-        <button onClick={() => { setFullscreen(true); }} style={{position: "absolute"}}>
-                Go Fullscreen
-        </button>
-        <Fullscreen enabled={fullscreen}>
-            <Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight} />
-        </Fullscreen >
-        </>
+        <Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight} />
     )
 }
 
