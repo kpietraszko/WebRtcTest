@@ -72,7 +72,9 @@ const Game: FC = () => {
             }
         });
         
-        // BABYLON.SceneOptimizer.OptimizeAsync(scene);
+        var optimizerOptions = BABYLON.SceneOptimizerOptions.ModerateDegradationAllowed();
+        optimizerOptions.targetFrameRate = 30;
+        BABYLON.SceneOptimizer.OptimizeAsync(scene, optimizerOptions);
     }
 
     return (
