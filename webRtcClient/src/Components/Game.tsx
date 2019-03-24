@@ -40,11 +40,17 @@ const Game: FC = () => {
         // Our built-in 'sphere' shape.
         var sphere = BABYLON.MeshBuilder.CreateSphere("sphere1", { segments: 16, diameter: 2} , scene);
 
+        sphere.material && sphere.material.freeze();
+
         // Move the sphere upward 1/2 its height
         sphere.position.y = 1;
 
         // Our built-in 'ground' shape.
         var ground = BABYLON.MeshBuilder.CreateGround("ground1", { width: 6, height: 6, subdivisions: 2}, scene);
+
+        ground.material && ground.material.freeze();
+        
+        ground.freezeNormals();
 
         engine.runRenderLoop(() => {
             if (scene) {
