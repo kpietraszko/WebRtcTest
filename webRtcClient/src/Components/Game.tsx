@@ -64,13 +64,15 @@ const Game: FC = () => {
         ground.material.freeze();
         
         ground.freezeNormals();
-
+        
         engine.runRenderLoop(() => {
             if (scene) {
                 scene.render();
                 setFps(engine.performanceMonitor.averageFPS);
             }
         });
+        
+        BABYLON.SceneOptimizer.OptimizeAsync(scene);
     }
 
     return (
