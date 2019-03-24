@@ -72,7 +72,7 @@ const Game: FC = () => {
             }
         });
         
-        BABYLON.SceneOptimizer.OptimizeAsync(scene);
+        // BABYLON.SceneOptimizer.OptimizeAsync(scene);
     }
 
     return (
