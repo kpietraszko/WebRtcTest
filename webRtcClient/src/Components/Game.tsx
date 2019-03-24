@@ -41,26 +41,29 @@ const Game: FC = () => {
         // Default intensity is 1.
         light.intensity = 2;
 
+        const sphereMaterial = new BABYLON.ShaderMaterial("unlitShader", scene, "./unlit", {
+            attributes: ["position"],
+            uniforms: ["worldViewProjection"]
+        });
+        sphereMaterial.setColor3("color", Color3.Green());
+
         // Our built-in 'sphere' shape.
         const sphere = BABYLON.MeshBuilder.CreateSphere("sphere1", { segments: 16, diameter: 2} , scene);
-        const sphereMat = new BABYLON.PBRMetallicRoughnessMaterial("sphereMat", scene);
-        sphereMat.baseColor = new BABYLON.Color3(0.206, 0.94, 1);
-        sphereMat.metallic = 0;
-        sphereMat.roughness = 0.1;
-        sphere.material = sphereMat;
+        sphere.material = sphereMaterial;
         sphere.material.freeze();
 
         // Move the sphere upward 1/2 its height
         sphere.position.y = 1;
 
+        const groundMaterial = new BABYLON.ShaderMaterial("unlitShader", scene, "./unlit", {
+            attributes: ["position"],
+            uniforms: ["worldViewProjection"]
+        });
+        groundMaterial.setColor3("color", Color3.Gray());
         // Our built-in 'ground' shape.
         const ground = BABYLON.MeshBuilder.CreateGround("ground1", { width: 6, height: 6, subdivisions: 2}, scene);
-        const groundMat = new BABYLON.PBRMetallicRoughnessMaterial ("groundMat", scene);
-        groundMat.baseColor = Color3.Gray();
-        groundMat.metallic = 0;
-        groundMat.roughness = 0.4;
-        
-        ground.material = groundMat;
+
+        ground.material = groundMaterial;
         ground.material.freeze();
         
         ground.freezeNormals();
