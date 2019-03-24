@@ -49,7 +49,7 @@ class Scene extends React.Component<SceneProps & React.HTMLAttributes<HTMLCanvas
     }
 
     // Resize the babylon engine when the window is resized
-    // window.addEventListener("resize", this.onResizeWindow);
+    window.addEventListener("resize", this.onResizeWindow);
   }
 
   componentWillUnmount () {
