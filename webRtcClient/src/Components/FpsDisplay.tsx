@@ -8,8 +8,7 @@ const fpsStyle = style({
 	position: "absolute",
 	top: px(10),
 	left: px(10),
-	color: "white",
-	mixBlendMode: "difference"
+	color: "white"
 });
 
 const FpsDisplay : FC = () => {

@@ -9,7 +9,6 @@ const footerStyle = style({
 	bottom: px(10),
 	left: px(10),
 	color: "white",
-	mixBlendMode: "difference"
 });
 const Version: FC = () => {
 	return (

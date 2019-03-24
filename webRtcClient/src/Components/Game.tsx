@@ -46,6 +46,7 @@ const Game: FC = () => {
             uniforms: ["worldViewProjection"]
         });
         sphereMaterial.setColor3("color", Color3.Green());
+        // sphereMaterial.wireframe = true;
 
         // Our built-in 'sphere' shape.
         const sphere = BABYLON.MeshBuilder.CreateSphere("sphere1", { segments: 16, diameter: 2} , scene);
@@ -60,6 +61,7 @@ const Game: FC = () => {
             uniforms: ["worldViewProjection"]
         });
         groundMaterial.setColor3("color", Color3.Gray());
+        // groundMaterial.wireframe = true;
         // Our built-in 'ground' shape.
         const ground = BABYLON.MeshBuilder.CreateGround("ground1", { width: 6, height: 6, subdivisions: 2}, scene);
 
