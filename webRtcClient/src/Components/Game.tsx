@@ -61,7 +61,7 @@ const Game: FC = () => {
     }
 
     return (
-        <Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight} />
+        <Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={720} height={1280}/* width={window.innerWidth} height={window.innerHeight}  *//>
     )
 }
 
