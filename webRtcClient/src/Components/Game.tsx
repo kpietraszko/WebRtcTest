@@ -3,7 +3,7 @@ import Scene, { SceneEventArgs } from "./Scene";
 import * as BABYLON from "babylonjs";
 import { style } from "typestyle";
 import { viewWidth, viewHeight, px, percent } from "csx";
-import { SetFpsContext } from "../contexts";
+import { SetFpsContext, SetFullscreenContext } from "../contexts";
 import Fullscreen from "react-full-screen";
 import { Color3 } from "babylonjs";
 
@@ -17,7 +17,7 @@ const canvasStyle = style({
 
 const Game: FC = () => {
     const setFps = useContext(SetFpsContext);
-    const [fullscreen, setFullscreen] = useState(false);
+    const setFullscreen = useContext(SetFullscreenContext);
     const onSceneMount = (e: SceneEventArgs) => {
         const { canvas, scene, engine } = e;
 
@@ -92,7 +92,10 @@ const Game: FC = () => {
     }
 
     return (
+        <>
+        <button style={{position: "absolute"}} onClick={() => setFullscreen(true)}>Fullscreen</button>
         <Scene onSceneMount={onSceneMount} className={canvasStyle} adaptToDeviceRatio={true} width={window.innerWidth} height={window.innerHeight} />
+        </>
     )
 }
 
