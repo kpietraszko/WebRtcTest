@@ -9,6 +9,7 @@ import * as uWS from "uWebSockets.js";
 import WebSocketsConfig from "./webSockets/config";
 // const messageHandler = require('./webSockets/messageHandler');
 import messageHandler from "./webSockets/messageHandler";
+import wait from './utils/wait';
 
 uWS.App({})
 	.ws('/*',
