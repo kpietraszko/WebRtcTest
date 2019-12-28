@@ -1,11 +1,11 @@
-import React, { FC, useRef, useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "reactn";
 import Scene, { SceneEventArgs } from "./Scene";
 import * as BABYLON from "babylonjs";
 import { style } from "typestyle";
 import { viewWidth, viewHeight, px, percent } from "csx";
-import { SetFpsContext, SetFullscreenContext } from "../contexts";
-import Fullscreen from "react-full-screen";
 import { Color3 } from "babylonjs";
+import GlobalState from "../GlobalState";
+import { useGlobal } from "reactn";
 
 const canvasStyle = style({
     width: percent(100),
@@ -15,9 +15,9 @@ const canvasStyle = style({
     display: "block"
 });
 
-const Game: FC = () => {
-    const setFps = useContext(SetFpsContext);
-    const setFullscreen = useContext(SetFullscreenContext);
+const Game = () => {
+    const [fps, setFps] = useGlobal<GlobalState>('fps');
+    const [fullscreen, setFullscreen] = useGlobal<GlobalState>('fullscreen');
     const onSceneMount = (e: SceneEventArgs) => {
         const { canvas, scene, engine } = e;
 

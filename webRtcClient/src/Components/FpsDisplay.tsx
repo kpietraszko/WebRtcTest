@@ -1,7 +1,8 @@
 import React, { FC, useContext } from "react";
-import { FpsContext } from "../contexts";
 import { style } from "typestyle";
 import { em, px } from "csx";
+import { useGlobal } from "reactn";
+import GlobalState from "../GlobalState";
 
 const fpsStyle = style({
 	fontSize: em(0.8),
@@ -12,7 +13,8 @@ const fpsStyle = style({
 });
 
 const FpsDisplay : FC = () => {
-	var fps = useContext(FpsContext);
+	const [ global, setGlobal ] = useGlobal<GlobalState>();
+	var fps = global.fps;
 	return (
 		<div className={fpsStyle}>{fps.toFixed()} fps</div>
 	)

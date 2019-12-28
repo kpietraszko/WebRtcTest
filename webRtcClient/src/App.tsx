@@ -1,20 +1,20 @@
-import React, { FC, createContext, useReducer, useContext } from "react";
+import React from "reactn";
+import { useGlobal } from 'reactn';
 import { style } from "typestyle";
 import Game from "./Components/Game";
 import Version from "./Components/Version";
 import FpsDisplay from "./Components/FpsDisplay";
-import GlobalStateHandler from "./Components/GlobalState";
-import genericReducer from "./store/genericReducer";
+import GlobalState from "./GlobalState";
 
-const App: FC = () => {
-  const [state, dispatch] = useReducer(genericReducer, { fps: 0, fullscreen: false });
-  console.log(fullscreen);
-  return (
-    <GlobalStateHandler dispatch={dispatch}>
-          <Game />
-          <FpsDisplay />
-          <Version />
-    </GlobalStateHandler>
+const App = () => {
+  const [ global, setGlobal ] = useGlobal<GlobalState>();
+  setGlobal({fps: 0, fullscreen: false});
+
+  return (<React.Fragment>
+            <Game />
+            <FpsDisplay />
+            <Version />
+          </React.Fragment>
   );
 };
 

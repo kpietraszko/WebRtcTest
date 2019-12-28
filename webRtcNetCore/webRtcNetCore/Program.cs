@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Microsoft.MixedReality.WebRTC;
+using System;
+using System.Threading.Tasks;
 
 namespace webRtcNetCore
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using var pc = new PeerConnection();
+            var config = new PeerConnectionConfiguration();
+            await pc.InitializeAsync(config);
+            Console.WriteLine("Peer connection initialized");
         }
     }
 }
